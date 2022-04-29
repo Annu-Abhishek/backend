@@ -71,8 +71,16 @@
 //     setTimeout(cb,2000*i,i);
 // }
 
- console.log("before") ; 
- setTimeout(function(){
-     console.log("timeover")
- },5000);
- console.log("after");
+//  console.log("before") ; 
+//  setTimeout(function(){
+//      console.log("timeover")
+//  },5000);
+//  console.log("after");
+
+(function (a){
+    return (function (){
+        console.log(a);
+        a=6;
+
+    }) ();
+}) (12);
