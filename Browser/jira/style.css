@@ -1,0 +1,8 @@
+* {
+    box-sizing: border-box;       /* copy m likha h box bsizing 2 types --and difference between border box and content box */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
