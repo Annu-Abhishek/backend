@@ -74,7 +74,7 @@ body {
     position: absolute;
     top: calc((100vh - 50vh) / 2);
     left: calc((100vw - 40vw) / 2);
-    display: flex;
+    display: none;
 }
 
 .textarea-cont {
@@ -104,4 +104,8 @@ body {
 .priority-color {
     height: 10%;
     width: 40%;
+}
+
+.active {
+    border: 5px solid red;
 }
