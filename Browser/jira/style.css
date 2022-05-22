@@ -77,7 +77,7 @@ body {
     display: none;
 }
 
-.textarea-cont {
+.textArea {
     height: 100%;
     width: 75%;
     background-color: #dfe4ea;
@@ -99,6 +99,12 @@ body {
 
 .main-cont {
     display: flex;
+    /* inside this container all my todo will be attached */
+    gap: 2rem;
+    justify-content: center;
+    padding: 2rem;
+    flex-wrap: wrap;
+
 }
 
 .priority-color {
@@ -108,4 +114,28 @@ body {
 
 .active {
     border: 5px solid red;
+}
+
+.ticket-cont {
+    height:12rem;
+    width:15rem;
+    background-color: #f1f2f6;
+}
+
+.ticket-color{
+    height: 1rem;
+    /* background-color: black; */
+}
+
+.ticket-id {
+    height: 2rem;
+    background-color: red;
+}
+
+.task-area {
+    height: calc(100% - 1rem - 2rem);   /*calc function m har word k bad ek space jrruri h ..nhi to accept nhi krega*/
+    font-size: 1.5rem;
+    outline:none;
+    overflow-wrap: break-word;
+    
 }
