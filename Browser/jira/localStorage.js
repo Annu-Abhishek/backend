@@ -1,8 +1,12 @@
+// localStorage browser ka function h ..behave like an object
+
 //set data
  localStorage.setItem("name", "Abhishek");
  localStorage.setItem("lastName", "kumar");
  localStorage.setItem("Stream", "CSE");
  localStorage.setItem("place", "Delhi")
+ localStorage.hobby = "reading";
+
  
 //get data
 let data = localStorage.getItem("name");
