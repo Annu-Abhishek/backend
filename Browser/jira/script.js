@@ -60,5 +60,3 @@ let removeBtn = document.querySelector(".remove-btn");
      mainCont.appendChild(ticketCont);
 
  }
-
-
