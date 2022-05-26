@@ -3,13 +3,16 @@ const addBtn= document.querySelector(".add-btn");
 const modalCont = document.querySelector(".modal-cont");
 const allPriorityColors = document.querySelectorAll(".priority-color");
 
-let colors =['lightPink', 'lightgreen', 'lightblue','black'];
+let colors =['lightpink', 'lightgreen', 'lightblue','black'];
 let modalPriorityColor = colors[colors.length-1];   //black bydefault select kiya
 let textAreaCont = document.querySelector(".textArea-cont");
 const mainCont = document.querySelector(".main-cont");
 let ticketsArr= [];
 let toolBoxColors = document.querySelectorAll(".color");
 let removeBtn = document.querySelector(".remove-btn");
+
+let lockClass = "fa-lock";
+let unlockClass = "fa-lock-open";
 
 //to open and close modal container
  let isModalPresent = false;
@@ -64,11 +67,15 @@ let removeBtn = document.querySelector(".remove-btn");
      <div class = "ticket-id">${id}</div>
      
      <div class = "task-area">${data}</div>
+     <div class = "ticket-lock">
+     <i class="fa-solid fa-lock"></i>
+     </div>
      `;
      mainCont.appendChild(ticketCont);
 
      handleRemoval(ticketCont,id);
     handleColor(ticketCont,id);
+    handleLock(ticketCont,id)
 
 
 if(!ticketId){
@@ -185,3 +192,33 @@ function  handleColor(ticket,id){
         });
 }
 
+//lock and unlock to make content editable true or false
+function  handleLock( ticket, id){       //lock ko handle krna
+    //  append icons in ticket
+    let ticketLockEle = ticket.querySelector(".ticket-lock");
+     //console.log(ticketLock);
+    // console.log(ticketLock.parentElement)
+    let ticketLock = ticketLockEle.children[0];
+     let ticketTaskArea = ticket.querySelector(".task-area");
+    // //console.log(ticketLock);
+
+
+     //toggle of icons and contenteditable property
+     ticketLock.addEventListener("click", function(){
+        let ticketIdx= getTicketIdx(id);
+        if(ticketLock.classList.contains(lockClass)) {
+           ticketLock.classList.remove(lockClass);
+            ticketLock.classList.add(unlockClass);
+             ticketTaskArea.setAttribute("contenteditable", "true");   //contentedible  true ..mtlb likha hua content ko edit kr sakte hn
+         }
+        else{
+            //if lock is open
+            ticketLock.classList.remove(unlockClass);
+            ticketLock.classList.add(lockClass);
+            ticketTaskArea.setAttribute("contenteditable", "false");
+        }
+        ticketsArr[ticketIdx].data = ticketTaskArea.innerText;
+        localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+    });
+
+}
