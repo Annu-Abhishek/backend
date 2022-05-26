@@ -67,6 +67,8 @@ let removeBtn = document.querySelector(".remove-btn");
      `;
      mainCont.appendChild(ticketCont);
 
+     handleRemoval(ticketCont,id);
+    handleColor(ticketCont,id);
 
 
 if(!ticketId){
@@ -121,5 +123,65 @@ for(let i= 0; i<toolBoxColors.length;i++){
            createTicket (ticketObj.ticketColor, ticketObj.data, ticketObj.ticketId)
         }) ;
     })
+}
+
+//on clicking remove button , make color red and make color white in clicking again
+let removeBtnActive = false;
+removeBtn.addEventListener("click", function (){
+    if (removeBtnActive) {
+        removeBtn.style.color= "white";
+    } else{
+        removeBtn.style.color= "red";
+    }
+    removeBtnActive = !removeBtnActive;
+});
+ 
+//remove ticket from local storage and UI
+function handleRemoval(ticket, id) {
+    ticket.addEventListener("click", function(){
+        if (!removeBtnActive) return ;
+        //local storage remove
+        // get idx of the ticket to be deleted
+        let idx = getTicketIdx(id);
+        ticketsArr.splice(idx,1);
+
+        //remove from browser storage and set updated arr
+        localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+
+        // frontend remove
+        ticket.remove();
+    });
+}
+
+//return index of the ticket inside Local Storage's array
+function getTicketIdx(id) {
+    let ticketIdx = ticketsArr.findIndex(function (ticketObj){
+        return ticketObj.ticketId==id;
+    })
+    return ticketIdx;
+}
+
+//change priority color of the tickets
+function  handleColor(ticket,id){
+    let ticketColorStrip = ticket.querySelector(".ticket-color");
+
+    ticketColorStrip.addEventListener("click", function(){
+        let currTicketColor = ticketColorStrip.classList[1];
+        //["lightpink", "lightgreen"," lightblue","black"]
+        let currTicketColorIdx = colors.indexOf(currTicketColor);   //0
+
+        let newTicketColorIdx = currTicketColorIdx +1 ;   //1
+
+        newTicketColorIdx = newTicketColorIdx % colors.length; //1
+        let newTicketColor = colors[newTicketColorIdx];  //lightgreen
+
+        ticketColorStrip.classList.remove(currTicketColor);  //lightpink
+        ticketColorStrip.classList.add(newTicketColor);
+
+        //local storage update
+        let ticketIdx = getTicketIdx(id);
+        ticketsArr[ticketIdx].ticketColor = newTicketColor;
+        localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+        });
 }
 
