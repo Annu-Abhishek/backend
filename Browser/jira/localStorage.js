@@ -28,3 +28,13 @@
 // let d =localStorage.key(2);
 // console.log(d);
 
+let user= {
+    name: "abhishek",
+    age: 30,
+    wife: "Annu",
+    children: "not known",
+    
+};
+let key = prompt("what do yor want to know about the user?", "name");
+
+alert(user[key]);

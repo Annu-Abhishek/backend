@@ -60,7 +60,8 @@ let unlockClass = "fa-lock-open";
     let id = ticketId || uid();     
     
     /* JS ki help s HTML likha ja rha h*/
-     let ticketCont = document.createElement("div");     
+     let ticketCont = document.createElement("div");  
+      
      ticketCont.setAttribute("class", "ticket-cont");
      ticketCont.innerHTML = `
      <div class = "ticket-color ${ticketColor}"></div>
