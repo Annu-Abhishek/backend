@@ -17,10 +17,10 @@ export default class
       ):(
        
         <div className="card banner-card" >
-  <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} className="card-img-top" alt="..."/>
-  <div className="card-body">
+  <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} className="card-img-top banner-img" alt="..."/>
+  <div className="card-body banner-title">
     <h5 className="card-title">{movie.original_title}</h5>
-    <p className="card-text">{movie.overview}</p>
+    <p className="card-text banner-text">{movie.overview}</p>
     {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
   </div>
 </div>

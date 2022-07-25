@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './Components/Navbar' ;
 import Banner from './Components/Banner';
 import getMovies from './Components/getMovies';
-// import List from './Components/List';
+import List from './Components/List';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
     <Navbar/>
     <Banner/>
     <getMovies/>
-    {/* <List/> */}
+    <List/>
    </div>
   );
 }
